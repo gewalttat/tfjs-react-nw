@@ -10,6 +10,8 @@ const HUGE_FILE = 10000;
 export const Visualization: FC = () => {
     const [result, setResult] = useState<tf.Tensor<tf.Rank> | tf.Tensor<tf.Rank>[]>();
 
+    console.log(result);
+
     // a model for linear regression
     const model = tf.sequential();
     model.add(tf.layers.dense({units: 1, inputShape: [1]}));
