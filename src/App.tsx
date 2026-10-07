@@ -1,3 +1,4 @@
+import { Mentor } from './Adventure/Mentor';
 import { LocaleContext } from './i18n/Locale';
 import React, { useState } from 'react';
 import './App.css';
@@ -32,7 +33,7 @@ function App() {
   function select(id: string) { setSelected(id); setVisited((current) => current.includes(id) ? current : [...current, id]); }
   return <LocaleContext.Provider value={english ? 'en' : 'ru'}><div className="App">
     <aside className="lab-sidebar">
-      <button className="lab-brand" onClick={() => select('digits')}><span className="brand-mark">μ</span><span>micro / lab<small>NEURAL EXPERIMENTS</small></span></button>
+      <button className="lab-brand" onClick={() => select('digits')}><span className="brand-mark">✦</span><span>ML <b>PLAYGROUND</b><small>TENSORFLOW.JS · EXPERIMENTS</small></span></button>
       <div className="sidebar-caption">{english ? 'EXPERIMENTS' : 'ЭКСПЕРИМЕНТЫ'} <span>{experiments.length.toString().padStart(2, '0')}</span></div>
       <nav aria-label={english ? 'Experiments' : 'Эксперименты'}>
         {experiments.map((item, index) => <button key={item.id} className={`nav-experiment ${selected === item.id ? 'is-active' : ''}`} aria-current={selected === item.id ? 'page' : undefined} onClick={() => select(item.id)}>
@@ -42,7 +43,8 @@ function App() {
       <div className="sidebar-bottom"><span className="online-dot" /> {english ? 'Computes in your browser' : 'Вычисления в браузере'}<small>TensorFlow.js · local models</small></div>
     </aside>
     <main className="lab-main">
-      <div className="lab-topbar"><span>micro / lab <span className="breadcrumb-separator">/</span> {english ? experiment.english : experiment.title}</span><span className="local-badge">LOCAL RUNTIME</span></div>
+      <Mentor key={`${selected}-${english}`} id={selected} english={english} />
+      <div className="lab-topbar"><span>ML PLAYGROUND <span className="breadcrumb-separator">/</span> {english ? experiment.english : experiment.title}</span><span className="local-badge">LOCAL RUNTIME</span></div>
       <div className="workspace">
         <header className="experiment-header">
           <div className="eyebrow">EXPERIMENT {(experiments.indexOf(experiment) + 1).toString().padStart(2, '0')} <span>/ {english ? experiment.kind : experiment.category}</span></div>
@@ -51,7 +53,7 @@ function App() {
           <div className="experiment-facts"><span><small>{english ? 'MODEL' : 'МОДЕЛЬ'}</small>{experiment.architecture}</span><span><small>{english ? 'EXECUTION' : 'ВЫЧИСЛЕНИЯ'}</small>{english ? 'On device' : 'На устройстве'}</span><span><small>{english ? 'OBSERVABILITY' : 'НАБЛЮДЕНИЕ'}</small>{english ? 'Live charts + heatmap' : 'Графики + хитмап'}</span></div>
         </header>
         {experiments.filter((item) => visited.includes(item.id)).map((item) => <section key={item.id} className="section-card experiment-panel" hidden={item.id !== selected} aria-label={english ? item.english : item.title}>{item.component}</section>)}
-        <footer className="lab-footer"><span>micro / lab <span className="footer-divider">·</span> {english ? 'Small models. Visible learning.' : 'Маленькие модели. Наглядное обучение.'}</span><button className="language-toggle" onClick={() => setEnglish((value) => !value)} aria-label="Switch interface language">◎ {english ? 'RU · Русский' : 'EN · English'}</button></footer>
+        <footer className="lab-footer"><span>ML PLAYGROUND <span className="footer-divider">·</span> {english ? 'Small models. Visible learning.' : 'Маленькие модели. Наглядное обучение.'}</span><button className="language-toggle" onClick={() => setEnglish((value) => !value)} aria-label="Switch interface language">◎ {english ? 'RU · Русский' : 'EN · English'}</button></footer>
       </div>
     </main>
   </div></LocaleContext.Provider>;
