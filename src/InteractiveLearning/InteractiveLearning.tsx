@@ -1,3 +1,4 @@
+import { Localized } from '../i18n/Locale';
 import React, { useEffect, useRef, useState } from 'react';
 import { TrainingCharts } from '../Training/TrainingCharts';
 import { useInteractiveTraining } from './useInteractiveTraining';
@@ -28,6 +29,7 @@ function curveExample(kind: string): Point[] {
 }
 
 export function InteractiveLearning({ classification }: { classification: boolean }) {
+
   const [points, setPoints] = useState<Point[]>(() => classification ? mapExample() : curveExample('sine'));
   const [label, setLabel] = useState(0);
   const [neurons, setNeurons] = useState(16);
@@ -39,7 +41,7 @@ export function InteractiveLearning({ classification }: { classification: boolea
   useEffect(() => {
     const context = canvasRef.current?.getContext('2d');
     if (!context) return;
-    context.fillStyle = '#0f172a'; context.fillRect(0, 0, WIDTH, HEIGHT);
+    context.fillStyle = '#242424'; context.fillRect(0, 0, WIDTH, HEIGHT);
     if (classification && prediction.length) {
       const field = document.createElement('canvas'); field.width = MAP_WIDTH; field.height = MAP_HEIGHT;
       const fieldContext = field.getContext('2d');
@@ -61,10 +63,10 @@ export function InteractiveLearning({ classification }: { classification: boolea
     }
     if (!classification) {
       const ordered = [...points].sort((a, b) => a.x - b.x);
-      context.strokeStyle = '#fbbf24'; context.lineWidth = 2; context.beginPath();
+      context.strokeStyle = '#dedbd2'; context.lineWidth = 2; context.beginPath();
       ordered.forEach((point, i) => i ? context.lineTo(point.x * WIDTH, point.y * HEIGHT) : context.moveTo(point.x * WIDTH, point.y * HEIGHT)); context.stroke();
       if (prediction.length) {
-        context.strokeStyle = '#38bdf8'; context.lineWidth = 3; context.beginPath();
+        context.strokeStyle = '#c4ab72'; context.lineWidth = 1.2; context.beginPath();
         prediction.forEach((value, i) => {
           const x = i / (prediction.length - 1) * WIDTH, y = (value + 1) / 2 * HEIGHT;
           if (i) context.lineTo(x, y); else context.moveTo(x, y);
@@ -73,8 +75,8 @@ export function InteractiveLearning({ classification }: { classification: boolea
     }
     points.forEach((point) => {
       context.beginPath(); context.arc(point.x * WIDTH, point.y * HEIGHT, classification ? 5 : 2.5, 0, Math.PI * 2);
-      context.fillStyle = classification ? COLORS[point.label] : '#fbbf24'; context.fill();
-      if (classification) { context.strokeStyle = '#f8fafc'; context.lineWidth = 1.5; context.stroke(); }
+      context.fillStyle = classification ? COLORS[point.label] : '#dedbd2'; context.fill();
+      if (classification) { context.strokeStyle = '#eeece6'; context.lineWidth = 1.5; context.stroke(); }
     });
   }, [points, prediction, classification]);
 
@@ -123,25 +125,25 @@ export function InteractiveLearning({ classification }: { classification: boolea
   const canTrain = points.length >= 3 && (!classification || new Set(points.map((point) => point.label)).size >= 2);
 
   return <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-    <h3 style={{ margin: 0 }}>{classification ? 'Color classification map' : 'Draw a function'}</h3>
-    <div style={{ color: '#a7b2c7', fontSize: 13 }}>{classification ? 'Choose a class and click to add examples. Shift-click removes nearby points. The background shows learned class probabilities.' : 'Drag to draw y as a function of x. Each horizontal position has one target value. Yellow is your curve; blue is the network prediction.'}</div>
+    <h3 style={{ margin: 0 }}><Localized>{classification ? 'Color classification map' : 'Draw a function'}</Localized></h3>
+    <div style={{ color: '#a6a39c', fontSize: 13 }}><Localized>{classification ? 'Choose a class and click to add examples. Shift-click removes nearby points. The background shows learned class probabilities.' : 'Drag to draw y as a function of x. Each horizontal position has one target value. Light is your curve; gold is the network prediction.'}</Localized></div>
     <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center' }}>
-      {classification && COLORS.map((color, index) => <button key={color} aria-pressed={label === index} onClick={() => setLabel(index)}
-        style={{ background: color, outline: label === index ? '2px solid white' : 'none', outlineOffset: 2 }}>Class {index + 1}</button>)}
-      <label>Neurons per layer{' '}<select value={neurons} disabled={training} onChange={(event) => { setNeurons(Number(event.target.value)); reset(); }}>
-        {[4, 16, 64].map((value) => <option key={value} value={value}>{value}</option>)}
+      <Localized>{classification && COLORS.map((color, index) => <button key={color} aria-pressed={label === index} onClick={() => setLabel(index)}
+        style={{ background: color, outline: label === index ? '2px solid white' : 'none', outlineOffset: 2 }}><Localized>{"Class "}</Localized><Localized>{index + 1}</Localized></button>)}</Localized>
+      <label><Localized>{"Neurons per layer"}</Localized><Localized>{' '}</Localized><select value={neurons} disabled={training} onChange={(event) => { setNeurons(Number(event.target.value)); reset(); }}>
+        <Localized>{[4, 16, 64].map((value) => <option key={value} value={value}><Localized>{value}</Localized></option>)}</Localized>
       </select></label>
-      <button onClick={training ? stop : watchTraining} disabled={!training && !canTrain}>{training ? 'stop training' : 'train network'}</button>
-      <button disabled={training} onClick={() => changePoints([])}>clear</button>
-      {classification ? <><button disabled={training} onClick={() => changePoints(mapExample())}>clusters</button><button disabled={training} onClick={() => changePoints(mapExample(true))}>spiral</button></>
-        : ['sine', 'step', 'abs'].map((kind) => <button key={kind} disabled={training} onClick={() => changePoints(curveExample(kind))}>{kind}</button>)}
+      <button onClick={training ? stop : watchTraining} disabled={!training && !canTrain}><Localized>{training ? 'stop training' : 'train network'}</Localized></button>
+      <button disabled={training} onClick={() => changePoints([])}><Localized>{"clear"}</Localized></button>
+      <Localized>{classification ? <><button disabled={training} onClick={() => changePoints(mapExample())}><Localized>{"clusters"}</Localized></button><button disabled={training} onClick={() => changePoints(mapExample(true))}><Localized>{"spiral"}</Localized></button></>
+        : ['sine', 'step', 'abs'].map((kind) => <button key={kind} disabled={training} onClick={() => changePoints(curveExample(kind))}><Localized>{kind}</Localized></button>)}</Localized>
     </div>
-    <div style={{ fontSize: 13, color: '#a7b2c7' }} aria-live="polite">{status} · {points.length} examples{!canTrain && ' · add at least 3 points'}</div>
+    <div style={{ fontSize: 13, color: '#a6a39c' }} aria-live="polite"><Localized>{status}</Localized><Localized>{" · "}</Localized><Localized>{points.length}</Localized><Localized>{" examples"}</Localized><Localized>{!canTrain && ' · add at least 3 points'}</Localized></div>
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
       <div><canvas ref={canvasRef} width={WIDTH} height={HEIGHT} onPointerDown={pointerDown} onPointerMove={(event) => { if (drawing.current && !training) addCurvePoint(getPoint(event)); }}
         onPointerUp={stopDrawing} onPointerCancel={stopDrawing} aria-label={classification ? 'Interactive class points and probability map' : 'Draw a target curve and watch the fitted function'}
-        style={{ width: '100%', border: '1px solid #475569', borderRadius: 16, touchAction: 'none', cursor: training ? 'wait' : 'crosshair' }} />
-        <p style={{ color: '#a7b2c7', fontSize: 12 }}>Two hidden layers with {neurons} neurons each. Change the data or layer size and train again to compare. Predictions update every 5 epochs.</p>
+        style={{ width: '100%', border: '1px solid #55524c', borderRadius: 16, touchAction: 'none', cursor: training ? 'wait' : 'crosshair' }} />
+        <p style={{ color: '#a6a39c', fontSize: 12 }}><Localized>{"Two hidden layers with "}</Localized><Localized>{neurons}</Localized><Localized>{" neurons each. Change the data or layer size and train again to compare. Predictions update every 5 epochs."}</Localized></p>
       </div>
       <TrainingCharts history={history} classification={classification} lossLabel={classification ? 'Cross-entropy' : 'Curve MSE'} validationNote="Metrics use your training examples. There is no separate validation set in this experiment." />
     </div>

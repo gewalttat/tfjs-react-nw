@@ -1,3 +1,4 @@
+import { Localized } from '../i18n/Locale';
 import React, { useEffect, useRef, useState } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import { TrainingCharts, TrainingEpoch } from '../Training/TrainingCharts';
@@ -142,35 +143,35 @@ export function TicTacToe() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <h3 style={{ margin: 0 }}>Neural tic-tac-toe</h3>
-      <div style={{ color: '#a7b2c7', fontSize: 13 }}>27 inputs → 64 → 32 → 9 move values. Learns from minimax; plays using its own predictions.</div>
+      <h3 style={{ margin: 0 }}><Localized>{"Neural tic-tac-toe"}</Localized></h3>
+      <div style={{ color: '#a6a39c', fontSize: 13 }}><Localized>{"27 inputs → 64 → 32 → 9 move values. Learns from minimax; plays using its own predictions."}</Localized></div>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
-        <button onClick={train} disabled={training}>{training ? 'training…' : model ? 'retrain network' : 'train network'}</button>
-        <button disabled={training || !model} onClick={() => setBoard(new Array(9).fill(0))}>new game</button>
-        <label style={{ alignSelf: 'center' }}>Play as{' '}
+        <button onClick={train} disabled={training}><Localized>{training ? 'training…' : model ? 'retrain network' : 'train network'}</Localized></button>
+        <button disabled={training || !model} onClick={() => setBoard(new Array(9).fill(0))}><Localized>{"new game"}</Localized></button>
+        <label style={{ alignSelf: 'center' }}><Localized>{"Play as"}</Localized><Localized>{' '}</Localized>
           <select value={human} disabled={training} onChange={(event) => { setHuman(Number(event.target.value) as Player); setBoard(new Array(9).fill(0)); }}>
-            <option value={1}>X · first</option><option value={-1}>O · second</option>
+            <option value={1}><Localized>{"X · first"}</Localized></option><option value={-1}><Localized>{"O · second"}</Localized></option>
           </select>
         </label>
       </div>
-      <div style={{ fontSize: 13, color: '#a7b2c7' }} aria-live="polite">{status}</div>
-      {agreement !== null && <div>Optimal moves on held-out positions: {(agreement * 100).toFixed(1)}%</div>}
+      <div style={{ fontSize: 13, color: '#a6a39c' }} aria-live="polite"><Localized>{status}</Localized></div>
+      <Localized>{agreement !== null && <div><Localized>{"Optimal moves on held-out positions: "}</Localized><Localized>{(agreement * 100).toFixed(1)}</Localized><Localized>{"%"}</Localized></div>}</Localized>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 24 }}>
         <div>
-          <div style={{ fontWeight: 700, marginBottom: 12 }} aria-live="polite">{gameStatus}</div>
+          <div style={{ fontWeight: 700, marginBottom: 12 }} aria-live="polite"><Localized>{gameStatus}</Localized></div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, maxWidth: 330 }}>
-            {board.map((cell, index) => (
+            <Localized>{board.map((cell, index) => (
               <button key={index} aria-label={`Square ${index + 1}: ${cell === 1 ? 'X' : cell === -1 ? 'O' : 'empty'}`}
                 disabled={!model || training || result !== null || player !== human || cell !== 0}
                 onClick={() => setBoard((previous) => { const next = [...previous]; next[index] = human; return next; })}
                 style={{ aspectRatio: '1', padding: 8, boxShadow: 'none', opacity: 1,
-                  background: cell !== 0 || scores.length === 0 ? '#1e293b' : `hsl(${((scores[index] + 1) / 2) * 120}, 45%, 25%)`,
-                  border: '1px solid #475569', fontSize: 32 }}>
-                {cell === 1 ? 'X' : cell === -1 ? 'O' : <span style={{ fontSize: 13 }}>{scores.length ? scores[index].toFixed(2) : '·'}</span>}
+                  background: cell !== 0 || scores.length === 0 ? '#303030' : `hsl(42, 25%, ${18 + ((scores[index] + 1) / 2) * 25}%)`,
+                  border: '1px solid #55524c', fontSize: 32 }}>
+                <Localized>{cell === 1 ? 'X' : cell === -1 ? 'O' : <span style={{ fontSize: 13 }}><Localized>{scores.length ? scores[index].toFixed(2) : '·'}</Localized></span>}</Localized>
               </button>
-            ))}
+            ))}</Localized>
           </div>
-          <p style={{ fontSize: 12, color: '#a7b2c7', maxWidth: 330 }}>Move heatmap for the player to move: red ≈ loss (−1), neutral ≈ draw (0), green ≈ win (+1). Values are estimates, not probabilities.</p>
+          <p style={{ fontSize: 12, color: '#a6a39c', maxWidth: 330 }}><Localized>{"Move heatmap for the player to move: darker ≈ loss (−1), middle ≈ draw (0), lighter gold ≈ win (+1). Values are estimates, not probabilities."}</Localized></p>
         </div>
         <TrainingCharts history={history} classification={false} lossLabel="Move-value MSE"
           validationNote="10% of positions are held out. Optimal-move agreement accepts every equally good minimax move." />

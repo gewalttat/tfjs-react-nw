@@ -1,3 +1,4 @@
+import { Localized } from '../i18n/Locale';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import { TrainingCharts, TrainingEpoch } from '../Training/TrainingCharts';
@@ -89,15 +90,15 @@ export function TicketEstimate({ tickets, metric }: { tickets: TTtmDbTicketRow[]
     }
   }
   return <div style={{ display: 'grid', gap: 16 }}>
-    <h3 style={{ margin: 0 }}>Per-ticket estimate · {METRIC_LABELS[metric]}</h3>
-    <div style={{ fontSize: 13, color: '#a7b2c7' }}>{rows.length} labeled tickets · inputs: space, first-commit repository/source/date, title length. No merge/release dates or durations enter X. raw fields are unavailable.</div>
+    <h3 style={{ margin: 0 }}><Localized>{"Per-ticket estimate · "}</Localized><Localized>{METRIC_LABELS[metric]}</Localized></h3>
+    <div style={{ fontSize: 13, color: '#a6a39c' }}><Localized>{rows.length}</Localized><Localized>{" labeled tickets · inputs: space, first-commit repository/source/date, title length. No merge/release dates or durations enter X. raw fields are unavailable."}</Localized></div>
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
-      <button disabled={!training && rows.length < 30} onClick={training ? () => { stopping.current = true; if (modelRef.current) modelRef.current.stopTraining = true; } : train}>{training ? 'stop' : 'train ticket predictor'}</button>
-      <label>Ticket <select value={target?.kaiten_card_id ?? ''} disabled={training} onChange={(event) => setSelected(event.target.value)}>{candidates.map((ticket) => <option key={ticket.kaiten_card_id} value={ticket.kaiten_card_id}>{ticket.kaiten_card_id} · {ticket.released_at ? 'released' : 'in progress'} · {ticket.title?.slice(0, 60) ?? ''}</option>)}</select></label>
+      <button disabled={!training && rows.length < 30} onClick={training ? () => { stopping.current = true; if (modelRef.current) modelRef.current.stopTraining = true; } : train}><Localized>{training ? 'stop' : 'train ticket predictor'}</Localized></button>
+      <label><Localized>{"Ticket "}</Localized><select value={target?.kaiten_card_id ?? ''} disabled={training} onChange={(event) => setSelected(event.target.value)}><Localized>{candidates.map((ticket) => <option key={ticket.kaiten_card_id} value={ticket.kaiten_card_id}><Localized>{ticket.kaiten_card_id}</Localized><Localized>{" · "}</Localized><Localized>{ticket.released_at ? 'released' : 'in progress'}</Localized><Localized>{" · "}</Localized><Localized>{ticket.title?.slice(0, 60) ?? ''}</Localized></option>)}</Localized></select></label>
     </div>
-    <div style={{ fontSize: 13, color: '#a7b2c7' }} aria-live="polite">{status}{rows.length < 30 ? ' · at least 30 labeled tickets required' : ''}{!candidates.length ? ' · no tickets with a valid first commit' : ''}</div>
-    {result && <div>Hidden-period MAE: {result.error.toFixed(2)} days · historical-median baseline: {result.baseline.toFixed(2)} days. {result.error < result.baseline ? 'Network beats this baseline.' : 'Baseline matches or beats the network.'}</div>}
-    {estimate !== null && <div>Estimated duration: <strong>{estimate.toFixed(2)} days</strong> · {METRIC_LABELS[metric]}{target?.released_at && <span> · actual: {ticketDurations(target)?.[metric]?.toFixed(2) ?? 'unknown'} days</span>}</div>}
+    <div style={{ fontSize: 13, color: '#a6a39c' }} aria-live="polite"><Localized>{status}<Localized></Localized>{rows.length < 30 ? ' · at least 30 labeled tickets required' : ''}<Localized></Localized>{!candidates.length ? ' · no tickets with a valid first commit' : ''}</Localized></div>
+    <Localized>{result && <div><Localized>{"Hidden-period MAE: "}</Localized><Localized>{result.error.toFixed(2)}</Localized><Localized>{" days · historical-median baseline: "}</Localized><Localized>{result.baseline.toFixed(2)}</Localized><Localized>{" days. "}</Localized><Localized>{result.error < result.baseline ? 'Network beats this baseline.' : 'Baseline matches or beats the network.'}</Localized></div>}</Localized>
+    <Localized>{estimate !== null && <div><Localized>{"Estimated duration: "}</Localized><strong><Localized>{estimate.toFixed(2)}</Localized><Localized>{" days"}</Localized></strong><Localized>{" · "}</Localized><Localized>{METRIC_LABELS[metric]}<Localized></Localized>{target?.released_at && <span><Localized>{" · actual: "}</Localized><Localized>{ticketDurations(target)?.[metric]?.toFixed(2) ?? 'unknown'}</Localized><Localized>{" days"}</Localized></span>}</Localized></div>}</Localized>
     <TrainingCharts history={history} classification={false} lossLabel="Normalized duration MSE" validationNote="First 100 epochs: chronological holdout; next 100: refit on all completed tickets. Estimates are full-stage durations, not remaining time. Validation uses current stored ticket fields, not historical feature snapshots." />
   </div>;
 }

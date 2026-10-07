@@ -1,3 +1,4 @@
+import { Localized } from '../i18n/Locale';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import { TrainingCharts, TrainingEpoch } from '../Training/TrainingCharts';
@@ -185,6 +186,7 @@ export function DigitRecognition() {
   const [trainingHistory, setTrainingHistory] = useState<TrainingEpoch[]>([]);
   const [status, setStatus] = useState('Loading MNIST model...');
   const [prediction, setPrediction] = useState<number | null>(null);
+  const [classScores, setClassScores] = useState<number[]>([]);
   const [confidence, setConfidence] = useState<number>(0);
 
   const isReady = useMemo(() => model !== null && status === 'ready', [model, status]);
@@ -330,6 +332,7 @@ export function DigitRecognition() {
     event.preventDefault();
     setPrediction(null);
     setConfidence(0);
+    setClassScores([]);
     context.lineCap = 'round';
     context.lineJoin = 'round';
     context.lineWidth = 12;
@@ -383,6 +386,7 @@ export function DigitRecognition() {
     context.fillRect(0, 0, canvas.width, canvas.height);
     setPrediction(null);
     setConfidence(0);
+    setClassScores([]);
   };
 
   const predictDigit = async () => {
@@ -395,6 +399,7 @@ export function DigitRecognition() {
     if (!normalizedPixels.some((pixel) => pixel > 0)) {
       setPrediction(null);
       setConfidence(0);
+    setClassScores([]);
       return;
     }
     const tensorInput = tf.tensor4d(normalizedPixels, [1, GRID_SIZE, GRID_SIZE, 1], 'float32');
@@ -405,6 +410,7 @@ export function DigitRecognition() {
 
     setPrediction(bestIndex);
     setConfidence(bestScore);
+    setClassScores(Array.from(probabilities));
 
     tensorInput.dispose();
     predictionTensor.dispose();
@@ -431,9 +437,9 @@ export function DigitRecognition() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <h3 style={{ margin: 0 }}>Digit recognition</h3>
-      <div style={{ fontSize: 13, color: '#a7b2c7' }}>
-        {status === 'ready' ? 'Real MNIST model ready' : status}
+      <h3 style={{ margin: 0 }}><Localized>{"Digit recognition"}</Localized></h3>
+      <div style={{ fontSize: 13, color: '#a6a39c' }}>
+        <Localized>{status === 'ready' ? 'Real MNIST model ready' : status}</Localized>
       </div>
 
       <TrainingCharts history={trainingHistory} />
@@ -461,19 +467,26 @@ export function DigitRecognition() {
       />
 
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-        <button onClick={predictDigit} disabled={!isReady} style={{ width: 120 }}>
-          predict
-        </button>
-        <button onClick={clearCanvas} style={{ width: 100 }}>clear</button>
+        <button onClick={predictDigit} disabled={!isReady} style={{ width: 120 }}><Localized>{" predict "}</Localized></button>
+        <button onClick={clearCanvas} style={{ width: 100 }}><Localized>{"clear"}</Localized></button>
       </div>
 
       <div style={{ minHeight: 26, fontSize: 18, fontWeight: 700 }}>
-        {prediction !== null ? `Predicted: ${prediction}` : 'Draw a digit'}
+        <Localized>{prediction !== null ? `Predicted: ${prediction}` : 'Draw a digit'}</Localized>
       </div>
 
-      <div style={{ fontSize: 13, color: '#b6c3d8' }}>
-        {confidence > 0 ? `Confidence: ${(confidence * 100).toFixed(1)}%` : 'Confidence: —'}
+      <div style={{ fontSize: 13, color: '#a6a39c' }}>
+        <Localized>{confidence > 0 ? `Confidence: ${(confidence * 100).toFixed(1)}%` : 'Confidence: —'}</Localized>
       </div>
+      {classScores.length > 0 && <div style={{ border: '1px solid #404040', borderRadius: 5, padding: 14 }}>
+        <div style={{ fontSize: 12, marginBottom: 12 }}><Localized>Class probabilities</Localized></div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(10, minmax(0, 1fr))', gap: 6 }}>
+          {classScores.map((value, digit) => <div key={digit} title={`${digit}: ${(value * 100).toFixed(2)}%`} style={{ textAlign: 'center', fontSize: 10 }}>
+            <div style={{ height: 80, display: 'flex', alignItems: 'flex-end', background: '#303030', marginBottom: 8 }}><div style={{ width: '100%', height: `${value * 100}%`, minHeight: 1, background: digit === prediction ? '#c4ab72' : '#8b8780' }} /></div>
+            <span>{digit}</span><div style={{ color: '#a6a39c', marginTop: 4 }}>{(value * 100).toFixed(0)}%</div>
+          </div>)}
+        </div>
+      </div>}
     </div>
   );
 }
