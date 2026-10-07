@@ -12,14 +12,19 @@ export function AdventureScene() {
       <pattern id="masonry" width="16" height="12" patternUnits="userSpaceOnUse"><path d="M0 0h16M0 6h16M8 0v6M0 6v6" fill="none" stroke="#0a171e" strokeOpacity=".55" /><path d="M1 1h6m2 6h6" stroke="#78858a" strokeOpacity=".2" /></pattern>
       <pattern id="shingles" width="12" height="8" patternUnits="userSpaceOnUse"><path fill="#25343c" d="M0 0h12v8H0z" /><path d="M0 7h12M6 0v7" stroke="#09151c" /><path d="M1 1h4" stroke="#4f6064" /></pattern>
     </defs>
+    <g className="parallax-sky">
     <path fill="url(#night)" d="M0 0h960v220H0z" />
     {Array.from({ length: 45 }, (_, i) => <rect className="scene-star" key={i} x={(i * 137 + 29) % 960} y={(i * 41 + 7) % 110} width={i % 4 === 0 ? 2 : 1} height={i % 4 === 0 ? 2 : 1} fill="#c3c7b4" style={{ animationDelay: `${i % 7}s` }} />)}
     <ellipse cx="811" cy="48" rx="105" ry="90" fill="url(#moon-halo)" /><g className="scene-moon"><path fill="#e9bc64" d="M799 24h24v4h8v8h4v24h-4v8h-8v4h-24v-4h-8v-8h-4V36h4v-8h8z" /><path fill="#c39246" d="M798 34h8v8h-8zm19 12h10v12h-10zm-17 13h7v5h-7z" /><path fill="#ffe2a1" d="M798 29h18v3h-15v7h-5v-5h2z" /></g>
+    <g className="scene-clouds" fill="#74818f" opacity=".08"><path d="M540 42h60v-6h40v4h61v7h46v6H522v-5h18zM193 70h42v-6h58v5h83v7H171v-3h22z" /></g>
+    <path className="shooting-star" stroke="#e5e5c5" strokeWidth="1" d="M595 15l-30 13" />
+    </g><g className="parallax-distance">
     {/* Distant ridges have stepped silhouettes and moonlit rock faces. */}
     <path fill="#26343e" d="M0 139h19v-12h16v-16h15V96h10V84h9v12h12v16h18v18h14v-22h12V91h10V71h10V57h9v17h12v19h14v21h15v23h17v-17h17v-16h13V85h10v17h15v23h21v25h22v-25h16v-23h14V83h10V67h8V47h9v22h12v19h17v23h18v20h20v22h25v-19h17v-16h16V99h12v16h17v20h24v-25h15V90h12V70h10V49h9v20h13v22h17v21h23v22h26v-23h15V92h13V75h9v16h15v25h22v25h25v-18h13v-23h14V76h12V55h8V37h8v22h12v22h18v18h20v22h25v28h28v71H0z" />
     <path fill="#465159" opacity=".55" d="M145 57h9v17h12v19h14v21h15v23h-9v-15h-13v-20h-12V88h-9V74h-7zm215-10h9v22h12v19h17v23h-12V99h-10V80h-9V67h-7zm412-10h8v22h12v22h18v18h-9V88h-15V71h-8V54h-6z" />
     {Array.from({ length: 110 }, (_, i) => <rect key={`rock-${i}`} x={(i * 83 + 7) % 960} y={112 + (i * 13) % 66} width={3 + i % 6} height="2" fill={i % 2 ? '#354650' : '#192a34'} opacity=".5" />)}
     <path fill="#16262f" d="M0 166h35v-9h34v-12h24v9h32v20h42v-11h25v-16h19v12h33v16h45v-9h39v-16h25v12h35v14h38v-11h37v-13h21v10h40v19h46v-13h30v-20h27v12h30v20h42v-13h27v-19h25v11h26v16h35v-13h35v-10h29v16h38v-8h28v-15h25v30h68v44H0z" />
+    </g><g className="parallax-world">
     {/* Three tree layers, irregular branches and cool rim lighting. */}
     {[0, 1, 2].map((layer) => <g key={layer}>{Array.from({ length: 18 }, (_, i) => {
       const x = (i * 71 + layer * 37) % 960, y = 126 + layer * 27 + i % 3 * 8;
@@ -48,6 +53,8 @@ export function AdventureScene() {
     </g>)}
     <path fill="#101920" d="M854 205v-21h3v-5h10v5h3v21z" /><path fill="#3d3229" d="M857 205v-20h10v20z" /><path stroke="#8b7150" d="M862 185v20" />
     <path fill="#536052" d="M788 205h147v3H788zm-11 8h161v2H777z" />
+    <g className="castle-enchantment" fill="none" stroke="#8bbaca" strokeWidth=".7" opacity=".6"><path d="M864 170l5 5-5 5-5-5zM864 166v4m0 10v4m-9-9h4m10 0h4" /></g>
+    <g className="castle-banner"><path fill="#733e4d" d="M836 88h12v20l-6-5-6 5z" /><path stroke="#b09465" d="M835 87h15" /><path fill="#d7b574" d="M841 92h2v7h-2zm-2 2h6v2h-6z" /></g>
     <path fill="#091317" d="M0 200h134v4h53v4h580v-4h193v16H0z" />
     {/* Timber cottage with a tiled roof, chimney, shutters and warm spill light. */}
     <path fill="url(#plaster)" stroke="#091217" strokeWidth="2" d="M0 98h111v104H0z" />
@@ -66,7 +73,16 @@ export function AdventureScene() {
     <path fill="#b09161" d="M85 186h34v4H85zm-7 6h32v4H78zm10 6h38v4H88z" /><path fill="#382c23" d="M85 190h34v2H85zm-7 6h32v2H78z" />
     <path fill="#304238" d="M5 196h8v-8h3v12h5v-5h3v7H5zm63 5v-9h3v-4h3v13h5v-7h3v10H68z" />
     <path fill="#6b563a" d="M4 203h89v2H4zm111 4h43v2h-43z" />
+    </g>
+    <g className="parallax-foreground">
+      {/* A silver stream, luminous mushrooms and an owl on the cottage roof. */}
+      <path fill="#18363d" d="M700 201h32l-18 5h24l-14 5h24l25 9H667l38-9h-18l25-5h-25z" />
+      <g className="water-shimmer" fill="#8aaea9" opacity=".4"><path d="M704 204h17v1h-17zm-3 5h26v1h-26zm-13 6h20v1h-20zm32 1h24v1h-24z" /></g>
+      {[[144, 207], [164, 213], [752, 209], [762, 212]].map(([x, y], i) => <g key={i} className="glow-mushroom" style={{ animationDelay: `${i}s` }}><path fill="#698e86" d={`M${x} ${y}h2v6h-2z`} /><path fill="#87b8b7" d={`M${x - 3} ${y}v-3h2v-2h4v2h2v3z`} /><rect x={x - 1} y={y - 3} width="2" height="1" fill="#d1f2d8" /></g>)}
+      <g transform="translate(108 87)"><path fill="#594f41" d="M-5 0v-10h3v3h4v-3h3V0H3v4h-6V0z" /><path fill="#ada080" d="M-3-6h6v5h-6z" /><g className="owl-eyes" fill="#efd07c"><rect x="-3" y="-5" width="2" height="2" /><rect x="1" y="-5" width="2" height="2" /></g><path fill="#c18b4c" d="M-1-2h2v2h-2z" /></g>
+      <g fill="#111f20"><path d="M0 220v-13h4v7h4v-17h3v15h4v-10h3v18zm934 0v-13h4v7h4v-20h3v13h4v-9h4v22z" /></g>
     <g className="scene-fireflies" fill="#f4cb71"><rect x="733" y="173" width="2" height="2" /><rect x="285" y="188" width="2" height="2" /><rect x="676" y="158" width="2" height="2" /></g>
+    </g>
   </svg>;
 }
 

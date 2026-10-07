@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useParallax } from './useParallax';
 import { AdventureScene, Wizard } from './AdventureScene';
 
 const lessons: Record<string, { ru: string[]; en: string[] }> = {
@@ -15,6 +16,7 @@ const lessons: Record<string, { ru: string[]; en: string[] }> = {
 };
 
 export function Mentor({ id, english }: { id: string; english: boolean }) {
+  const scene = useParallax();
   const pages = lessons[id][english ? 'en' : 'ru'];
   const [page, setPage] = useState(0);
   const [visible, setVisible] = useState(0);
@@ -30,8 +32,11 @@ export function Mentor({ id, english }: { id: string; english: boolean }) {
     return () => window.clearInterval(timer);
   }, [text, replay]);
   const talking = visible < text.length;
-  return <header className="adventure-hero">
+  return <header ref={scene} className="adventure-hero">
     <AdventureScene />
+    <div className="scene-vignette" aria-hidden="true" />
+    <div className="magic-motes" aria-hidden="true">{Array.from({ length: 16 }, (_, i) => <i key={i} style={{ left: `${(i * 61 + 3) % 100}%`, top: `${30 + i * 17 % 65}%`, animationDelay: `${i * -.9}s`, animationDuration: `${7 + i % 5}s` }} />)}</div>
+    <div className="chapter-plaque" aria-hidden="true">✦ {english ? 'THE MOONLIT ARCHIVE' : 'ЛУННЫЙ АРХИВ'} ✦</div>
     <div className="mentor-stage"><Wizard talking={talking} />
       <div className="mentor-dialog pixel-frame">
         <div className="mentor-title"><span>{english ? 'ARCHIVIST · GUIDE TO SMALL NETWORKS' : 'АРХИВАРИУС · ХРАНИТЕЛЬ МАЛЫХ СЕТЕЙ'}</span><span>{page + 1} / {pages.length}</span></div>

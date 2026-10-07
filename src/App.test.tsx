@@ -16,3 +16,11 @@ it('navigates, preserves an opened experiment, and switches shell language', () 
   fireEvent.click(screen.getByRole('button', { name: 'Switch interface language' }));
   expect(screen.getByRole('heading', { name: 'Handwritten digits' })).toBeTruthy();
 });
+
+it('exits contemplation with Escape', () => {
+  render(<App />);
+  fireEvent.click(screen.getByRole('button', { name: 'Созерцание' }));
+  expect(document.querySelector('.is-contemplating')).toBeTruthy();
+  fireEvent.keyDown(window, { key: 'Escape' });
+  expect(document.querySelector('.is-contemplating')).toBeNull();
+});

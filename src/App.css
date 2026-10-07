@@ -148,3 +148,52 @@ th, td { border-color: #2f3b43; }
 @media(max-width:1000px) { .wizard { width: 175px; } }
 @media(max-width:700px) { .wizard { width: 100px; } .mentor-stage { gap: 8px; } }
 @media(prefers-reduced-motion:reduce) { .pipe-smoke { opacity: .25; } .campfire-spark { opacity: .6; } }
+
+/* The archive comes alive in independently moving planes. */
+.adventure-hero { --scene-x: 0px; --scene-y: 0px; min-height: 345px; }
+.adventure-landscape { inset: -14px; width: calc(100% + 28px); height: calc(100% + 28px); }
+.parallax-sky { transform: translate(calc(var(--scene-x) * -.15), calc(var(--scene-y) * -.15)); }
+.parallax-distance { transform: translate(calc(var(--scene-x) * -.35), calc(var(--scene-y) * -.35)); }
+.parallax-world { transform: translate(calc(var(--scene-x) * -.65), calc(var(--scene-y) * -.65)); }
+.parallax-foreground { transform: translate(calc(var(--scene-x) * -1), calc(var(--scene-y) * -1)); }
+.parallax-sky, .parallax-distance, .parallax-world, .parallax-foreground { transition: transform .25s ease-out; }
+.mentor-stage { padding-top: 89px; padding-bottom: 35px; position: relative; z-index: 2; }
+.mentor-dialog { background: linear-gradient(135deg, #0c1821f5, #0a1219f2); box-shadow: inset 0 0 0 3px #172027, inset 0 0 0 4px #665032, 3px 3px 0 #040b10, 0 0 35px #e9b65708; }
+.mentor-dialog::after { content: '✦'; position: absolute; right: -6px; top: -9px; color: #e7bf7d; font-size: 16px; text-shadow: 0 0 9px #e9b657; }
+.scene-vignette { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse at 45% 70%, transparent 25%, #04101977 100%), linear-gradient(0deg,#09131988,transparent 25%); }
+.chapter-plaque { position: absolute; z-index: 2; top: 25px; left: 50%; transform: translateX(-50%); color: #c7b17c; font-size: 10px; letter-spacing: 3px; white-space: nowrap; text-shadow: 0 2px #061219; }
+.magic-motes { position: absolute; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+.magic-motes i { position: absolute; width: 2px; height: 2px; background: #b5e5d4; box-shadow: 0 0 7px 2px #9bd4c055; animation: mote-wander 8s ease-in-out infinite; }
+.magic-motes i:nth-child(3n) { background: #f5ce83; box-shadow: 0 0 7px 2px #eabc6755; }
+.scene-clouds { animation: clouds-drift 40s ease-in-out infinite alternate; }
+.castle-enchantment { animation: enchantment 5s ease-in-out infinite; }
+.castle-banner { transform-origin: 836px 88px; animation: banner-sway 4s ease-in-out infinite; }
+.glow-mushroom { animation: mushroom-glow 6s ease-in-out infinite; }
+.water-shimmer { animation: water-glint 4s steps(4) infinite; }
+.owl-eyes { animation: owl-blink 9s steps(1) infinite; }
+.shooting-star { opacity: 0; animation: meteor 17s linear infinite; }
+.runtime-controls { display: flex; gap: 14px; align-items: center; }
+.sound-toggle { font-size: 10px; color: #c5b387; background: #101c24; padding: 5px 9px; }
+.sound-toggle[aria-pressed=true] { color: #eac578; border-color: #c49850; }
+@keyframes mote-wander { 0%,100% { opacity: 0; transform: translate(0,0); } 25% { opacity: .75; } 55% { opacity: .3; transform: translate(14px,-24px); } 80% { opacity: .8; transform: translate(-8px,-40px); } }
+@keyframes clouds-drift { from { transform: translateX(-18px); } to { transform: translateX(25px); } }
+@keyframes enchantment { 0%,100% { opacity: .25; filter: drop-shadow(0 0 1px #80c5e0); } 50% { opacity: .9; filter: drop-shadow(0 0 5px #80c5e0); } }
+@keyframes banner-sway { 0%,100% { transform: skewX(-3deg); } 50% { transform: skewX(4deg); } }
+@keyframes mushroom-glow { 0%,100% { filter: drop-shadow(0 0 2px #78c6ac66); } 50% { filter: drop-shadow(0 0 5px #78c6acbb); } }
+@keyframes water-glint { 0%,100% { opacity: .2; } 50% { opacity: .55; } }
+@keyframes owl-blink { 0%,94%,100% { opacity: 1; } 96% { opacity: 0; } }
+@keyframes meteor { 0%,89%,100% { opacity: 0; transform: translate(0,0); } 90% { opacity: .8; transform: translate(0,0); } 94% { opacity: 0; transform: translate(-120px,52px); } }
+@media(max-width:700px) { .mentor-stage { padding-top: 60px; } .chapter-plaque { top: 22px; font-size: 8px; letter-spacing: 2px; } .sound-toggle { font-size: 9px; white-space: nowrap; } .lab-topbar > span { max-width: 52%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } }
+@media(prefers-reduced-motion:reduce) { .adventure-hero .parallax-sky, .adventure-hero .parallax-distance, .adventure-hero .parallax-world, .adventure-hero .parallax-foreground { transform: none; } .magic-motes i { opacity: .4; } }
+
+.runtime-controls { flex-wrap: wrap; gap: 7px; }
+.runtime-controls button { font-size: 10px; padding: 5px 8px; }
+.lab-topbar { height: auto; min-height: 50px; padding-top: 8px; padding-bottom: 8px; }
+.is-contemplating .lab-sidebar, .is-contemplating .workspace { display: none; }
+.is-contemplating .adventure-hero { min-height: calc(100vh - 70px); display: flex; align-items: flex-end; }
+.is-contemplating .mentor-stage { width: 100%; padding-bottom: 70px; }
+.is-contemplating .lab-main { max-width: none; }
+.is-contemplating .chapter-plaque { top: 8%; }
+.is-contemplating .lab-topbar { justify-content: center; }
+.is-contemplating .lab-topbar > span { display: none; }
+@media(max-width:700px) { .lab-topbar { flex-wrap: wrap; } .is-contemplating .mentor-stage { padding-bottom: 45px; } }

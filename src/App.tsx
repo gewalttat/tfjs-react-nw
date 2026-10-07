@@ -1,6 +1,7 @@
+import { useAmbience } from './Adventure/useAmbience';
 import { Mentor } from './Adventure/Mentor';
 import { LocaleContext } from './i18n/Locale';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { LoadPrediction } from './LoadPrediction/LoadPrediction';
 import { PricesPrediction } from './PricesPrediction/PricesPrediction';
@@ -29,9 +30,16 @@ function App() {
   const [selected, setSelected] = useState('digits');
   const [visited, setVisited] = useState(['digits']);
   const [english, setEnglish] = useState(false);
+  const [contemplate, setContemplate] = useState(false);
+  useEffect(() => {
+    const escape = (event: KeyboardEvent) => { if (event.key === 'Escape') { setContemplate(false); } };
+    window.addEventListener('keydown', escape);
+    return () => window.removeEventListener('keydown', escape);
+  }, []);
+  const ambience = useAmbience(selected);
   const experiment = experiments.find((item) => item.id === selected)!;
   function select(id: string) { setSelected(id); setVisited((current) => current.includes(id) ? current : [...current, id]); }
-  return <LocaleContext.Provider value={english ? 'en' : 'ru'}><div className="App">
+  return <LocaleContext.Provider value={english ? 'en' : 'ru'}><div className={`App ${contemplate ? 'is-contemplating' : ''}`}>
     <aside className="lab-sidebar">
       <button className="lab-brand" onClick={() => select('digits')}><span className="brand-mark">✦</span><span>ML <b>PLAYGROUND</b><small>TENSORFLOW.JS · EXPERIMENTS</small></span></button>
       <div className="sidebar-caption">{english ? 'EXPERIMENTS' : 'ЭКСПЕРИМЕНТЫ'} <span>{experiments.length.toString().padStart(2, '0')}</span></div>
@@ -44,7 +52,7 @@ function App() {
     </aside>
     <main className="lab-main">
       <Mentor key={`${selected}-${english}`} id={selected} english={english} />
-      <div className="lab-topbar"><span>ML PLAYGROUND <span className="breadcrumb-separator">/</span> {english ? experiment.english : experiment.title}</span><span className="local-badge">LOCAL RUNTIME</span></div>
+      <div className="lab-topbar"><span>ML PLAYGROUND <span className="breadcrumb-separator">/</span> {english ? experiment.english : experiment.title}</span><div className="runtime-controls"><button aria-pressed={contemplate} onClick={() => setContemplate((value) => !value)}>{contemplate ? (english ? 'Return to lab' : 'В лабораторию') : (english ? 'Contemplate' : 'Созерцание')}</button><button className="sound-toggle" disabled={ambience.starting} aria-pressed={ambience.enabled} onClick={ambience.toggle}>{ambience.enabled ? '♫' : '♪'} {ambience.unavailable ? (english ? 'Audio unavailable' : 'Звук недоступен') : ambience.enabled ? (english ? 'Sound on' : 'Звук включён') : (english ? 'Enable sound' : 'Включить звук')}</button><span className="local-badge">LOCAL RUNTIME</span></div></div>
       <div className="workspace">
         <header className="experiment-header">
           <div className="eyebrow">EXPERIMENT {(experiments.indexOf(experiment) + 1).toString().padStart(2, '0')} <span>/ {english ? experiment.kind : experiment.category}</span></div>
