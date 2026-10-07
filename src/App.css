@@ -130,3 +130,21 @@ th, td { border-color: #2f3b43; }
 @media(max-width: 1000px) { .App { display: block; } .lab-sidebar nav { grid-template-columns: repeat(5,minmax(0,1fr)); } .nav-experiment { font-size: 10px; padding: 10px 6px; gap: 5px; } .nav-dot { display: none; } .mentor-dialog p { font-size: 13px; } .wizard { width: 130px; } }
 @media(max-width: 700px) { .lab-sidebar { padding: 18px 16px; gap: 16px; display: block; } .lab-brand { font-size: 20px; margin-bottom: 18px; } .lab-sidebar nav { display: flex; overflow: auto; padding: 0 0 4px; } .nav-experiment { font-size: 12px; padding: 10px; } .sidebar-bottom { display: none; } .adventure-hero { min-height: 325px; } .mentor-stage { padding: 35px 16px 22px; gap: 10px; align-items: flex-end; } .wizard { width: 75px; } .mentor-dialog { padding: 14px; } .mentor-title { font-size: 9px; letter-spacing: 0; } .mentor-dialog p { min-height: 155px; font-size: 12px; line-height: 1.6; } .mentor-actions > span { display: none; } .mentor-actions { justify-content: flex-end; } .workspace { padding: 24px 16px; } .section-card { padding: 16px; } .lab-topbar { padding: 0 16px; } .local-badge { display: none; } }
 @media(prefers-reduced-motion: reduce) { .App *, .App *::before { animation: none !important; transition: none !important; } }
+
+/* Warm foreground fire against cool moonlit stone. */
+.wizard { width: 210px; }
+.pipe-smoke { opacity: 0; animation: pipe-drift 3.6s ease-out infinite; }
+.pipe-ember { animation: ember-glow 3.6s ease-in-out infinite; }
+.campfire-flames { transform-origin: 116px 102px; animation: fire-dance .65s steps(3) infinite; filter: drop-shadow(0 0 5px #f5a03888); }
+.campfire-glow { animation: fire-light 1.4s ease-in-out infinite; }
+.campfire-spark { opacity: 0; animation: spark-rise 2.4s ease-out infinite; }
+.chimney-smoke { animation: chimney-drift 8s ease-in-out infinite; }
+@keyframes pipe-drift { 0% { opacity: 0; transform: translate(0, 3px); } 20% { opacity: .45; } 70% { opacity: .2; } 100% { opacity: 0; transform: translate(10px, -20px); } }
+@keyframes ember-glow { 0%,100% { opacity: .45; } 35% { opacity: 1; filter: drop-shadow(0 0 2px #ff9e4a); } }
+@keyframes fire-dance { 0%,100% { transform: scale(1,1); } 33% { transform: scale(.94,1.12); } 66% { transform: scale(1.06,.92); } }
+@keyframes fire-light { 0%,100% { opacity: .6; } 45% { opacity: 1; } 70% { opacity: .8; } }
+@keyframes spark-rise { 0% { opacity: 0; transform: translate(0,5px); } 15% { opacity: 1; } 100% { opacity: 0; transform: translate(8px,-30px); } }
+@keyframes chimney-drift { 0%,100% { opacity: .1; transform: translate(0,0); } 50% { opacity: .2; transform: translate(-5px,-8px); } }
+@media(max-width:1000px) { .wizard { width: 175px; } }
+@media(max-width:700px) { .wizard { width: 100px; } .mentor-stage { gap: 8px; } }
+@media(prefers-reduced-motion:reduce) { .pipe-smoke { opacity: .25; } .campfire-spark { opacity: .6; } }
