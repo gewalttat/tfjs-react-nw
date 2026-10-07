@@ -2,6 +2,10 @@ import React from 'react';
 import './App.css';
 import { LoadPrediction } from './LoadPrediction/LoadPrediction';
 import { PricesPrediction } from './PricesPrediction/PricesPrediction';
+import { TicketForecast } from './TeamForecast/TicketForecast';
+import { NeuralImage } from './NeuralImage/NeuralImage';
+import { Ballistics } from './Ballistics/Ballistics';
+import { InteractiveLearning } from './InteractiveLearning/InteractiveLearning';
 import { NeuralCar } from './NeuralCar/NeuralCar';
 import { TicTacToe } from './TicTacToe/TicTacToe';
 import { DigitRecognition } from './DigitRecognition/DigitRecognition';
@@ -39,6 +43,18 @@ function App() {
         <section className="section-card">
           <NeuralCar />
         </section>
+
+        <section className="section-card">
+          <InteractiveLearning classification />
+        </section>
+
+        <section className="section-card">
+          <InteractiveLearning classification={false} />
+        </section>
+
+        <section className="section-card"><NeuralImage /></section>
+        <section className="section-card"><Ballistics /></section>
+        <section className="section-card"><TicketForecast /></section>
       </div>
     </div>
   );

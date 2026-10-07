@@ -1,0 +1,888 @@
+{
+  "definition": "Days from development start to production; weekly median of released tasks.",
+  "demo": true,
+  "teams": [
+    {
+      "id": "platform",
+      "name": "Platform",
+      "weekly": [
+        {
+          "week": "2025-01-06",
+          "medianDays": 16.45
+        },
+        {
+          "week": "2025-01-13",
+          "medianDays": 16.56
+        },
+        {
+          "week": "2025-01-20",
+          "medianDays": 16.52
+        },
+        {
+          "week": "2025-01-27",
+          "medianDays": 17.01
+        },
+        {
+          "week": "2025-02-03",
+          "medianDays": 16.68
+        },
+        {
+          "week": "2025-02-10",
+          "medianDays": 15.23
+        },
+        {
+          "week": "2025-02-17",
+          "medianDays": 14.44
+        },
+        {
+          "week": "2025-02-24",
+          "medianDays": 14.69
+        },
+        {
+          "week": "2025-03-03",
+          "medianDays": 14.61
+        },
+        {
+          "week": "2025-03-10",
+          "medianDays": 14.43
+        },
+        {
+          "week": "2025-03-17",
+          "medianDays": 15.37
+        },
+        {
+          "week": "2025-03-24",
+          "medianDays": 16.5
+        },
+        {
+          "week": "2025-03-31",
+          "medianDays": 16.26
+        },
+        {
+          "week": "2025-04-07",
+          "medianDays": 15.53
+        },
+        {
+          "week": "2025-04-14",
+          "medianDays": 15.42
+        },
+        {
+          "week": "2025-04-21",
+          "medianDays": 14.93
+        },
+        {
+          "week": "2025-04-28",
+          "medianDays": 13.63
+        },
+        {
+          "week": "2025-05-05",
+          "medianDays": 13.21
+        },
+        {
+          "week": "2025-05-12",
+          "medianDays": 14.08
+        },
+        {
+          "week": "2025-05-19",
+          "medianDays": 14.61
+        },
+        {
+          "week": "2025-05-26",
+          "medianDays": 14.6
+        },
+        {
+          "week": "2025-06-02",
+          "medianDays": 15.25
+        },
+        {
+          "week": "2025-06-09",
+          "medianDays": 15.91
+        },
+        {
+          "week": "2025-06-16",
+          "medianDays": 15.14
+        },
+        {
+          "week": "2025-06-23",
+          "medianDays": 13.87
+        },
+        {
+          "week": "2025-06-30",
+          "medianDays": 13.57
+        },
+        {
+          "week": "2025-07-07",
+          "medianDays": 13.42
+        },
+        {
+          "week": "2025-07-14",
+          "medianDays": 12.71
+        },
+        {
+          "week": "2025-07-21",
+          "medianDays": 12.8
+        },
+        {
+          "week": "2025-07-28",
+          "medianDays": 14.08
+        },
+        {
+          "week": "2025-08-04",
+          "medianDays": 14.78
+        },
+        {
+          "week": "2025-08-11",
+          "medianDays": 14.44
+        },
+        {
+          "week": "2025-08-18",
+          "medianDays": 14.42
+        },
+        {
+          "week": "2025-08-25",
+          "medianDays": 14.52
+        },
+        {
+          "week": "2025-09-01",
+          "medianDays": 13.47
+        },
+        {
+          "week": "2025-09-08",
+          "medianDays": 12.14
+        },
+        {
+          "week": "2025-09-15",
+          "medianDays": 12.14
+        },
+        {
+          "week": "2025-09-22",
+          "medianDays": 12.66
+        },
+        {
+          "week": "2025-09-29",
+          "medianDays": 12.58
+        },
+        {
+          "week": "2025-10-06",
+          "medianDays": 12.9
+        },
+        {
+          "week": "2025-10-13",
+          "medianDays": 14.08
+        },
+        {
+          "week": "2025-10-20",
+          "medianDays": 14.45
+        },
+        {
+          "week": "2025-10-27",
+          "medianDays": 13.51
+        },
+        {
+          "week": "2025-11-03",
+          "medianDays": 12.84
+        },
+        {
+          "week": "2025-11-10",
+          "medianDays": 12.7
+        },
+        {
+          "week": "2025-11-17",
+          "medianDays": 11.88
+        },
+        {
+          "week": "2025-11-24",
+          "medianDays": 10.98
+        },
+        {
+          "week": "2025-12-01",
+          "medianDays": 11.5
+        },
+        {
+          "week": "2025-12-08",
+          "medianDays": 12.6
+        },
+        {
+          "week": "2025-12-15",
+          "medianDays": 12.79
+        },
+        {
+          "week": "2025-12-22",
+          "medianDays": 12.82
+        },
+        {
+          "week": "2025-12-29",
+          "medianDays": 13.45
+        },
+        {
+          "week": "2026-01-05",
+          "medianDays": 13.3
+        },
+        {
+          "week": "2026-01-12",
+          "medianDays": 11.91
+        },
+        {
+          "week": "2026-01-19",
+          "medianDays": 11.01
+        },
+        {
+          "week": "2026-01-26",
+          "medianDays": 11.14
+        },
+        {
+          "week": "2026-02-02",
+          "medianDays": 10.95
+        },
+        {
+          "week": "2026-02-09",
+          "medianDays": 10.63
+        },
+        {
+          "week": "2026-02-16",
+          "medianDays": 11.49
+        },
+        {
+          "week": "2026-02-23",
+          "medianDays": 12.71
+        },
+        {
+          "week": "2026-03-02",
+          "medianDays": 12.65
+        },
+        {
+          "week": "2026-03-09",
+          "medianDays": 12.04
+        },
+        {
+          "week": "2026-03-16",
+          "medianDays": 12.01
+        },
+        {
+          "week": "2026-03-23",
+          "medianDays": 11.58
+        },
+        {
+          "week": "2026-03-30",
+          "medianDays": 10.23
+        },
+        {
+          "week": "2026-04-06",
+          "medianDays": 9.6
+        },
+        {
+          "week": "2026-04-13",
+          "medianDays": 10.32
+        },
+        {
+          "week": "2026-04-20",
+          "medianDays": 10.81
+        },
+        {
+          "week": "2026-04-27",
+          "medianDays": 10.79
+        },
+        {
+          "week": "2026-05-04",
+          "medianDays": 11.48
+        },
+        {
+          "week": "2026-05-11",
+          "medianDays": 12.32
+        },
+        {
+          "week": "2026-05-18",
+          "medianDays": 11.74
+        }
+      ]
+    },
+    {
+      "id": "product",
+      "name": "Product",
+      "weekly": [
+        {
+          "week": "2025-01-06",
+          "medianDays": 10.6
+        },
+        {
+          "week": "2025-01-13",
+          "medianDays": 10.88
+        },
+        {
+          "week": "2025-01-20",
+          "medianDays": 10.76
+        },
+        {
+          "week": "2025-01-27",
+          "medianDays": 10.99
+        },
+        {
+          "week": "2025-02-03",
+          "medianDays": 11.64
+        },
+        {
+          "week": "2025-02-10",
+          "medianDays": 11.94
+        },
+        {
+          "week": "2025-02-17",
+          "medianDays": 11.29
+        },
+        {
+          "week": "2025-02-24",
+          "medianDays": 10.06
+        },
+        {
+          "week": "2025-03-03",
+          "medianDays": 9.23
+        },
+        {
+          "week": "2025-03-10",
+          "medianDays": 9.27
+        },
+        {
+          "week": "2025-03-17",
+          "medianDays": 9.69
+        },
+        {
+          "week": "2025-03-24",
+          "medianDays": 9.73
+        },
+        {
+          "week": "2025-03-31",
+          "medianDays": 9.42
+        },
+        {
+          "week": "2025-04-07",
+          "medianDays": 9.53
+        },
+        {
+          "week": "2025-04-14",
+          "medianDays": 10.52
+        },
+        {
+          "week": "2025-04-21",
+          "medianDays": 11.85
+        },
+        {
+          "week": "2025-04-28",
+          "medianDays": 12.55
+        },
+        {
+          "week": "2025-05-05",
+          "medianDays": 12.32
+        },
+        {
+          "week": "2025-05-12",
+          "medianDays": 11.79
+        },
+        {
+          "week": "2025-05-19",
+          "medianDays": 11.71
+        },
+        {
+          "week": "2025-05-26",
+          "medianDays": 11.93
+        },
+        {
+          "week": "2025-06-02",
+          "medianDays": 11.72
+        },
+        {
+          "week": "2025-06-09",
+          "medianDays": 10.75
+        },
+        {
+          "week": "2025-06-16",
+          "medianDays": 9.68
+        },
+        {
+          "week": "2025-06-23",
+          "medianDays": 9.43
+        },
+        {
+          "week": "2025-06-30",
+          "medianDays": 10.11
+        },
+        {
+          "week": "2025-07-07",
+          "medianDays": 10.95
+        },
+        {
+          "week": "2025-07-14",
+          "medianDays": 11.25
+        },
+        {
+          "week": "2025-07-21",
+          "medianDays": 11.24
+        },
+        {
+          "week": "2025-07-28",
+          "medianDays": 11.66
+        },
+        {
+          "week": "2025-08-04",
+          "medianDays": 12.7
+        },
+        {
+          "week": "2025-08-11",
+          "medianDays": 13.61
+        },
+        {
+          "week": "2025-08-18",
+          "medianDays": 13.57
+        },
+        {
+          "week": "2025-08-25",
+          "medianDays": 12.68
+        },
+        {
+          "week": "2025-09-01",
+          "medianDays": 11.83
+        },
+        {
+          "week": "2025-09-08",
+          "medianDays": 11.63
+        },
+        {
+          "week": "2025-09-15",
+          "medianDays": 11.74
+        },
+        {
+          "week": "2025-09-22",
+          "medianDays": 11.45
+        },
+        {
+          "week": "2025-09-29",
+          "medianDays": 10.68
+        },
+        {
+          "week": "2025-10-06",
+          "medianDays": 10.23
+        },
+        {
+          "week": "2025-10-13",
+          "medianDays": 10.76
+        },
+        {
+          "week": "2025-10-20",
+          "medianDays": 12.0
+        },
+        {
+          "week": "2025-10-27",
+          "medianDays": 12.98
+        },
+        {
+          "week": "2025-11-03",
+          "medianDays": 13.18
+        },
+        {
+          "week": "2025-11-10",
+          "medianDays": 13.07
+        },
+        {
+          "week": "2025-11-17",
+          "medianDays": 13.36
+        },
+        {
+          "week": "2025-11-24",
+          "medianDays": 14.01
+        },
+        {
+          "week": "2025-12-01",
+          "medianDays": 14.22
+        },
+        {
+          "week": "2025-12-08",
+          "medianDays": 13.47
+        },
+        {
+          "week": "2025-12-15",
+          "medianDays": 12.24
+        },
+        {
+          "week": "2025-12-22",
+          "medianDays": 11.5
+        },
+        {
+          "week": "2025-12-29",
+          "medianDays": 11.62
+        },
+        {
+          "week": "2026-01-05",
+          "medianDays": 12.02
+        },
+        {
+          "week": "2026-01-12",
+          "medianDays": 12.0
+        },
+        {
+          "week": "2026-01-19",
+          "medianDays": 11.7
+        },
+        {
+          "week": "2026-01-26",
+          "medianDays": 11.9
+        },
+        {
+          "week": "2026-02-02",
+          "medianDays": 12.97
+        },
+        {
+          "week": "2026-02-09",
+          "medianDays": 14.28
+        },
+        {
+          "week": "2026-02-16",
+          "medianDays": 14.87
+        },
+        {
+          "week": "2026-02-23",
+          "medianDays": 14.56
+        },
+        {
+          "week": "2026-03-02",
+          "medianDays": 14.06
+        },
+        {
+          "week": "2026-03-09",
+          "medianDays": 14.03
+        },
+        {
+          "week": "2026-03-16",
+          "medianDays": 14.25
+        },
+        {
+          "week": "2026-03-23",
+          "medianDays": 13.95
+        },
+        {
+          "week": "2026-03-30",
+          "medianDays": 12.92
+        },
+        {
+          "week": "2026-04-06",
+          "medianDays": 11.9
+        },
+        {
+          "week": "2026-04-13",
+          "medianDays": 11.77
+        },
+        {
+          "week": "2026-04-20",
+          "medianDays": 12.52
+        },
+        {
+          "week": "2026-04-27",
+          "medianDays": 13.32
+        },
+        {
+          "week": "2026-05-04",
+          "medianDays": 13.56
+        },
+        {
+          "week": "2026-05-11",
+          "medianDays": 13.56
+        },
+        {
+          "week": "2026-05-18",
+          "medianDays": 14.06
+        }
+      ]
+    },
+    {
+      "id": "mobile",
+      "name": "Mobile",
+      "weekly": [
+        {
+          "week": "2025-01-06",
+          "medianDays": 12.0
+        },
+        {
+          "week": "2025-01-13",
+          "medianDays": 13.12
+        },
+        {
+          "week": "2025-01-20",
+          "medianDays": 13.82
+        },
+        {
+          "week": "2025-01-27",
+          "medianDays": 13.93
+        },
+        {
+          "week": "2025-02-03",
+          "medianDays": 13.59
+        },
+        {
+          "week": "2025-02-10",
+          "medianDays": 13.18
+        },
+        {
+          "week": "2025-02-17",
+          "medianDays": 13.09
+        },
+        {
+          "week": "2025-02-24",
+          "medianDays": 13.42
+        },
+        {
+          "week": "2025-03-03",
+          "medianDays": 13.98
+        },
+        {
+          "week": "2025-03-10",
+          "medianDays": 14.38
+        },
+        {
+          "week": "2025-03-17",
+          "medianDays": 14.24
+        },
+        {
+          "week": "2025-03-24",
+          "medianDays": 13.49
+        },
+        {
+          "week": "2025-03-31",
+          "medianDays": 12.36
+        },
+        {
+          "week": "2025-04-07",
+          "medianDays": 11.3
+        },
+        {
+          "week": "2025-04-14",
+          "medianDays": 10.69
+        },
+        {
+          "week": "2025-04-21",
+          "medianDays": 10.63
+        },
+        {
+          "week": "2025-04-28",
+          "medianDays": 10.92
+        },
+        {
+          "week": "2025-05-05",
+          "medianDays": 11.16
+        },
+        {
+          "week": "2025-05-12",
+          "medianDays": 11.02
+        },
+        {
+          "week": "2025-05-19",
+          "medianDays": 10.46
+        },
+        {
+          "week": "2025-05-26",
+          "medianDays": 9.75
+        },
+        {
+          "week": "2025-06-02",
+          "medianDays": 9.31
+        },
+        {
+          "week": "2025-06-09",
+          "medianDays": 9.46
+        },
+        {
+          "week": "2025-06-16",
+          "medianDays": 10.23
+        },
+        {
+          "week": "2025-06-23",
+          "medianDays": 11.31
+        },
+        {
+          "week": "2025-06-30",
+          "medianDays": 12.26
+        },
+        {
+          "week": "2025-07-07",
+          "medianDays": 12.75
+        },
+        {
+          "week": "2025-07-14",
+          "medianDays": 12.73
+        },
+        {
+          "week": "2025-07-21",
+          "medianDays": 12.49
+        },
+        {
+          "week": "2025-07-28",
+          "medianDays": 12.41
+        },
+        {
+          "week": "2025-08-04",
+          "medianDays": 14.27
+        },
+        {
+          "week": "2025-08-11",
+          "medianDays": 15.04
+        },
+        {
+          "week": "2025-08-18",
+          "medianDays": 15.88
+        },
+        {
+          "week": "2025-08-25",
+          "medianDays": 16.35
+        },
+        {
+          "week": "2025-09-01",
+          "medianDays": 16.2
+        },
+        {
+          "week": "2025-09-08",
+          "medianDays": 15.45
+        },
+        {
+          "week": "2025-09-15",
+          "medianDays": 14.46
+        },
+        {
+          "week": "2025-09-22",
+          "medianDays": 13.66
+        },
+        {
+          "week": "2025-09-29",
+          "medianDays": 13.34
+        },
+        {
+          "week": "2025-10-06",
+          "medianDays": 13.44
+        },
+        {
+          "week": "2025-10-13",
+          "medianDays": 13.65
+        },
+        {
+          "week": "2025-10-20",
+          "medianDays": 13.58
+        },
+        {
+          "week": "2025-10-27",
+          "medianDays": 13.02
+        },
+        {
+          "week": "2025-11-03",
+          "medianDays": 12.08
+        },
+        {
+          "week": "2025-11-10",
+          "medianDays": 9.65
+        },
+        {
+          "week": "2025-11-17",
+          "medianDays": 9.15
+        },
+        {
+          "week": "2025-11-24",
+          "medianDays": 9.3
+        },
+        {
+          "week": "2025-12-01",
+          "medianDays": 9.99
+        },
+        {
+          "week": "2025-12-08",
+          "medianDays": 10.85
+        },
+        {
+          "week": "2025-12-15",
+          "medianDays": 11.45
+        },
+        {
+          "week": "2025-12-22",
+          "medianDays": 11.6
+        },
+        {
+          "week": "2025-12-29",
+          "medianDays": 11.4
+        },
+        {
+          "week": "2026-01-05",
+          "medianDays": 11.21
+        },
+        {
+          "week": "2026-01-12",
+          "medianDays": 11.41
+        },
+        {
+          "week": "2026-01-19",
+          "medianDays": 12.13
+        },
+        {
+          "week": "2026-01-26",
+          "medianDays": 13.2
+        },
+        {
+          "week": "2026-02-02",
+          "medianDays": 14.19
+        },
+        {
+          "week": "2026-02-09",
+          "medianDays": 14.69
+        },
+        {
+          "week": "2026-02-16",
+          "medianDays": 14.55
+        },
+        {
+          "week": "2026-02-23",
+          "medianDays": 13.93
+        },
+        {
+          "week": "2026-03-02",
+          "medianDays": 13.24
+        },
+        {
+          "week": "2026-03-09",
+          "medianDays": 12.86
+        },
+        {
+          "week": "2026-03-16",
+          "medianDays": 12.92
+        },
+        {
+          "week": "2026-03-23",
+          "medianDays": 13.23
+        },
+        {
+          "week": "2026-03-30",
+          "medianDays": 13.41
+        },
+        {
+          "week": "2026-04-06",
+          "medianDays": 13.1
+        },
+        {
+          "week": "2026-04-13",
+          "medianDays": 12.25
+        },
+        {
+          "week": "2026-04-20",
+          "medianDays": 11.1
+        },
+        {
+          "week": "2026-04-27",
+          "medianDays": 10.1
+        },
+        {
+          "week": "2026-05-04",
+          "medianDays": 9.62
+        },
+        {
+          "week": "2026-05-11",
+          "medianDays": 9.76
+        },
+        {
+          "week": "2026-05-18",
+          "medianDays": 10.28
+        }
+      ]
+    }
+  ]
+}
