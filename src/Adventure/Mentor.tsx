@@ -36,7 +36,6 @@ export function Mentor({ id, english }: { id: string; english: boolean }) {
     <AdventureScene />
     <div className="scene-vignette" aria-hidden="true" />
     <div className="magic-motes" aria-hidden="true">{Array.from({ length: 16 }, (_, i) => <i key={i} style={{ left: `${(i * 61 + 3) % 100}%`, top: `${30 + i * 17 % 65}%`, animationDelay: `${i * -.9}s`, animationDuration: `${7 + i % 5}s` }} />)}</div>
-    <div className="chapter-plaque" aria-hidden="true">✦ {english ? 'THE MOONLIT ARCHIVE' : 'ЛУННЫЙ АРХИВ'} ✦</div>
     <div className="mentor-stage"><Wizard talking={talking} />
       <div className="mentor-dialog pixel-frame">
         <div className="mentor-title"><span>{english ? 'ARCHIVIST · GUIDE TO SMALL NETWORKS' : 'АРХИВАРИУС · ХРАНИТЕЛЬ МАЛЫХ СЕТЕЙ'}</span><span>{page + 1} / {pages.length}</span></div>
